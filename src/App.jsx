@@ -19,14 +19,17 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/us" element={<UsNews />} />
+          <Route
+            path="/us"
+            element={<UsNews heading={" Popular USA News"} />}
+          />
           <Route path="/world" element={<WorldNews />} />
           <Route path="/politics" element={<PoliticsNews />} />
+          <Route path="/business" element={<BusinessNews />} />
           <Route
-            path="/business"
-            element={<BusinessNews heading={"Popular Business News"} />}
+            path="/tech"
+            element={<TechNews heading={"Popular Technology"} />}
           />
-          <Route path="/tech" element={<TechNews />} />
           <Route path="/entertainment" element={<EntertainmentNews />} />
           <Route path="/travel" element={<TravelNews />} />
           <Route path="/sports" element={<SportsNews />} />

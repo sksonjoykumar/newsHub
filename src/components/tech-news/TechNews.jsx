@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import BusinessNews from "../business-news/BusinessNews";
+import React from "react";
+import UsNews from "../us-news/UsNews";
 
 function TechNews() {
   return (
     <div>
-      <BusinessNews heading={"World Technology"} />
+      <UsNews heading={"World Technology"} />
     </div>
   );
 }

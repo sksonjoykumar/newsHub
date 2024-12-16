@@ -1,12 +1,11 @@
 import React from "react";
-
-import BusinessNews from "../business-news/BusinessNews";
+import UsNews from "../us-news/UsNews";
 
 function SportsNews() {
   return (
     <div>
 
-      <BusinessNews heading={"World Sports News"} />
+      <UsNews heading={"World Sports News"} />
     </div>
   );
 }

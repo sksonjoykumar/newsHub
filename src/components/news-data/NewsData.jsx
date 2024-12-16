@@ -5,15 +5,14 @@ import { toast } from "react-toastify";
 import Pagination from "../pagination/Pagination";
 
 function NewsData() {
-  const { loading, error, worldNewsData } = useContext(StoreContext);
-
+  const { loading, error, newsData } = useContext(StoreContext);
   const [currentPage, setCurrentPage] = useState(1);
   const itemPerPage = 16;
 
   const startIndex = (currentPage - 1) * itemPerPage;
   const endIndex = startIndex + itemPerPage;
 
-  const currentItems = worldNewsData.data?.slice(startIndex, endIndex) || [];
+  const currentItems = newsData.articles?.slice(startIndex, endIndex) || [];
 
   // handlePageChange function
   const handlePageChange = (page) => {
@@ -31,20 +30,19 @@ function NewsData() {
 
   // error
   if (error) {
-    return toast.error(error);
+    return toast.error(error.message);
   }
 
-  // // No articles found
-  if (!worldNewsData.data || worldNewsData.data.length === 0) {
+  // No articles found
+  if (!newsData.articles || newsData.articles.length === 0) {
     return (
       <div className="text-gray-500 text-center my-14">No articles found.</div>
     );
   }
 
-  console.log(currentItems);
   return (
     <>
-      <div className="px-4 md:px-20 mt-6  ">
+      <div className="px-4 md:px-20 mt-10  ">
         <h1 className="font-inter font-semibold text-2xl md:text-3xl text-[#FF014F] dark:text-[#3A80E9]">
           World Popular news
         </h1>
@@ -61,35 +59,31 @@ function NewsData() {
                   </p>
                 </a>
                 <img
-                  src={item.image}
+                  src={item.urlToImage}
                   alt="News Img"
                   className="w-20 h-[5rem] rounded-sm object-cover border dark:border-gray-700 text-sm text-gray-600 dark:text-gray-400 text-center"
                 />
               </div>
 
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-tight">
-                {item.description.slice(0, 180)}...
+                {item.content.slice(0, 180)}...
               </p>
 
               <div className="flex justify-between flex-wrap mt-2">
                 <p className="text-sm text-gray-800 dark:text-gray-300">
                   <span className="font-semibold">Author: </span>
-                  {item.author || "Unknown"}
+                  {item.author}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   <span className="font-semibold text-[#0F925C]"> Source:</span>{" "}
-                  {item.source}
+                  {item.source.name}
                 </p>
               </div>
 
-              <div className="flex justify-between flex-wrap mt-2">
+              <div className="mt-1">
                 <p className="text-sm text-gray-800 dark:text-gray-300 text-end">
                   <span className="font-semibold"> Date:</span>{" "}
-                  {item.published_at.slice(0, 10)}
-                </p>
-                <p className="text-sm text-gray-800 dark:text-gray-300 ">
-                  <span className="font-semibold ">Country: </span>
-                  {item.country.toUpperCase()}
+                  {item.publishedAt.slice(0, 10)}
                 </p>
               </div>
             </div>
@@ -97,7 +91,7 @@ function NewsData() {
         </div>
       </div>
       <Pagination
-        totalItems={worldNewsData.data?.length || 0}
+        totalItems={newsData.articles?.length || 0}
         itemPerPage={itemPerPage}
         currentPage={currentPage}
         handlePageChange={handlePageChange}

@@ -7,34 +7,26 @@ export const StoreContext = createContext();
 function GlobalContext({ children }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [worldNewsData, setWorldNewsData] = useState([]);
-  const [limit, setLimit] = useState(100);
+  const [newsData, setNewsData] = useState([]);
 
   useEffect(() => {
     const onSuccess = (data) => {
-      setWorldNewsData(data);
+      setNewsData(data);
       setError(null);
     };
-    const onError = (error) => {
-      setError(error);
-      toast.error(error);
+
+    const onError = (errorMessage) => {
+      setError(errorMessage);
+      toast.error(errorMessage);
     };
-    const url = `https://api.mediastack.com/v1/news?access_key=e3bb6b8f2a8baed3aa5bed26ddaaf131&limit=${limit}`;
+    const url = `https://newsapi.org/v2/everything?q=apple&from=2024-12-14&to=2024-12-14&sortBy=popularity&apiKey=31646d6d1188473ba51430f3ead439c9`;
 
     setLoading(true);
     fetchData(url, onSuccess, onError).finally(() => setLoading(false));
-  }, [limit]);
-
+  }, []);
 
   // context value
-  const contextValue = {
-    loading,
-    setLoading,
-    error,
-    setError,
-    worldNewsData,
-    setLimit,
-  };
+  const contextValue = { loading, error, newsData };
   return (
     <StoreContext.Provider value={contextValue}>
       {children}

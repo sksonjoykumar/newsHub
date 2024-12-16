@@ -1,10 +1,10 @@
 import React from "react";
-import BusinessNews from "../business-news/BusinessNews";
+import UsNews from "../us-news/UsNews";
 
 function WorldNews() {
   return (
     <div>
-      <BusinessNews heading={"Popular World News"} />
+      <UsNews heading={"Top 10 World news"} />
     </div>
   );
 }
