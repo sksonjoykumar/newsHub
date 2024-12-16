@@ -1,10 +1,10 @@
 import React from "react";
-import TechNews from "../tech-news/TechNews";
+import BusinessNews from "../business-news/BusinessNews";
 
 function TravelNews() {
   return (
     <div>
-      <TechNews heading={"World Travel News"} />
+      <BusinessNews heading={"World Travel News"} />
     </div>
   );
 }

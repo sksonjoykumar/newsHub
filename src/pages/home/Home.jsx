@@ -1,12 +1,12 @@
 import React from "react";
-import NewsDate from "../../components/news-data/NewsDate";
 import NewsBanner from "../../components/news-banner/NewsBanner";
+import NewsData from "../../components/news-data/NewsData";
 
 function Home() {
   return (
     <div>
-      <NewsBanner/>
-      <NewsDate />
+      <NewsBanner />
+      <NewsData />
     </div>
   );
 }

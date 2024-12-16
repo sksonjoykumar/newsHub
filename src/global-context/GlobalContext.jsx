@@ -7,26 +7,34 @@ export const StoreContext = createContext();
 function GlobalContext({ children }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [newsData, setNewsData] = useState([]);
+  const [worldNewsData, setWorldNewsData] = useState([]);
+  const [limit, setLimit] = useState(100);
 
   useEffect(() => {
     const onSuccess = (data) => {
-      setNewsData(data);
+      setWorldNewsData(data);
       setError(null);
     };
-
-    const onError = (errorMessage) => {
-      setError(errorMessage);
-      toast.error(errorMessage);
+    const onError = (error) => {
+      setError(error);
+      toast.error(error);
     };
-    const url = `https://newsapi.org/v2/everything?q=tesla&from=2024-11-15&sortBy=publishedAt&apiKey=31646d6d1188473ba51430f3ead439c9`;
+    const url = `https://api.mediastack.com/v1/news?access_key=e3bb6b8f2a8baed3aa5bed26ddaaf131&limit=${limit}`;
 
     setLoading(true);
     fetchData(url, onSuccess, onError).finally(() => setLoading(false));
-  }, []);
+  }, [limit]);
+
 
   // context value
-  const contextValue = { loading, error, newsData };
+  const contextValue = {
+    loading,
+    setLoading,
+    error,
+    setError,
+    worldNewsData,
+    setLimit,
+  };
   return (
     <StoreContext.Provider value={contextValue}>
       {children}
