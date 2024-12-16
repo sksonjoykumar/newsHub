@@ -19,7 +19,7 @@ function GlobalContext({ children }) {
       setError(errorMessage);
       toast.error(errorMessage);
     };
-    const url = `https://newsapi.org/v2/everything?q=apple&from=2024-12-14&to=2024-12-14&sortBy=popularity&apiKey=31646d6d1188473ba51430f3ead439c9`;
+    const url = `https://newsapi.org/v2/everything?q=tesla&from=2024-11-15&sortBy=publishedAt&apiKey=31646d6d1188473ba51430f3ead439c9`;
 
     setLoading(true);
     fetchData(url, onSuccess, onError).finally(() => setLoading(false));
