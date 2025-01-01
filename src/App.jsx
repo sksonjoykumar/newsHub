@@ -21,18 +21,30 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/us"
-            element={<UsNews heading={" Popular USA News"} />}
+            element={<UsNews heading={"Today USA Popular News"} />}
           />
-          <Route path="/world" element={<WorldNews />} />
+          <Route
+            path="/world"
+            element={<WorldNews heading={"World Top News"} />}
+          />
           <Route path="/politics" element={<PoliticsNews />} />
           <Route path="/business" element={<BusinessNews />} />
           <Route
             path="/tech"
             element={<TechNews heading={"Popular Technology"} />}
           />
-          <Route path="/entertainment" element={<EntertainmentNews />} />
-          <Route path="/travel" element={<TravelNews />} />
-          <Route path="/sports" element={<SportsNews />} />
+          <Route
+            path="/entertainment"
+            element={<EntertainmentNews heading={"Enjoy your Life"} />}
+          />
+          <Route
+            path="/travel"
+            element={<TravelNews heading="World travel Tip!" />}
+          />
+          <Route
+            path="/sports"
+            element={<SportsNews heading={"World top Sports"} />}
+          />
         </Routes>
         <Footer />
       </div>

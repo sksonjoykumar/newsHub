@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
       <NewsBanner />
-      <NewsData />
+      <NewsData heading={"World Popular news"} />
     </div>
   );
 }
