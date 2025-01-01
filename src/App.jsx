@@ -27,7 +27,7 @@ function App() {
             path="/world"
             element={<WorldNews heading={"World Top News"} />}
           />
-          <Route path="/politics" element={<PoliticsNews />} />
+          <Route path="/politics" element={<PoliticsNews heading={"World Politics"}/>} />
           <Route path="/business" element={<BusinessNews />} />
           <Route
             path="/tech"
